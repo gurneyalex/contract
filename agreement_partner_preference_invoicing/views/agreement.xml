@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="customer_agreement_form" model="ir.ui.view">
+        <field name="name">agreement.form (customer invoicing preferences)</field>
+        <field name="model">agreement</field>
+        <field name="inherit_id" ref="agreement_sale_condition_base.customer_agreement_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='page1']" position="inside">
+                <group name="invoicing">
+                    <group>
+                        <field name="req_cust_invoice_transmission_mode"/>
+                        <field name="req_cust_invoice_transmission_frequency"/>
+                    </group>
+                    <group>
+                        <field name="req_cust_invoice_ref"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- FIXME: needs merging with the template version -->
+    <record id="agreement_form" model="ir.ui.view">
+        <field name="name">agreement.form (sale order version)</field>
+        <field name="model">agreement</field>
+        <field name="inherit_id" ref="agreement_sale_condition_base.agreement_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='config']" position="before">
+                <page name="invoicing" string="Invoicing">
+                    <group name="invoicing">
+                        <group>
+                            <field name="req_cust_invoice_transmission_mode"/>
+                            <field name="req_cust_invoice_transmission_frequency"/>
+                        </group>
+                        <group>
+                            <field name="req_cust_invoice_ref"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
